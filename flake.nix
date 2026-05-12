@@ -54,6 +54,8 @@
       inherit rustToolchain;
       panel = prev.callPackage ./pkgs/panel/package.nix {inherit rustPlatform;};
       panel-nightly = prev.callPackage ./pkgs/panel-nightly/package.nix {inherit rustPlatform;};
+      wings = prev.callPackage ./pkgs/wings/package.nix {inherit rustPlatform;};
+      wings-nightly = prev.callPackage ./pkgs/wings-nightly/package.nix {inherit rustPlatform;};
     };
 
     packages = forAllSystems ({
@@ -70,6 +72,12 @@
         inherit rustPlatform;
       };
       panel-nightly = pkgs.callPackage ./pkgs/panel-nightly/package.nix {
+        inherit rustPlatform;
+      };
+      wings = pkgs.callPackage ./pkgs/wings/package.nix {
+        inherit rustPlatform;
+      };
+      wings-nightly = pkgs.callPackage ./pkgs/wings-nightly/package.nix {
         inherit rustPlatform;
       };
       microvm-test = let
