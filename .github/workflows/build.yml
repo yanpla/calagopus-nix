@@ -24,6 +24,14 @@ jobs:
               - 'flake.nix'
               - 'flake.lock'
               - 'pkgs/panel-nightly/**'
+            wings:
+              - 'flake.nix'
+              - 'flake.lock'
+              - 'pkgs/wings/**'
+            wings-nightly:
+              - 'flake.nix'
+              - 'flake.lock'
+              - 'pkgs/wings-nightly/**'
 
   build:
     needs: changes
