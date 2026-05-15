@@ -39,7 +39,11 @@
           };
         });
   in {
-    nixosModules.default = ./modules/panel.nix;
+    nixosModules = {
+      default = ./modules/panel.nix;
+      panel = ./modules/panel.nix;
+      wings = ./modules/wings.nix;
+    };
 
     overlays.default = final: prev: let
       rustToolchain = with inputs.fenix.packages.${prev.stdenv.hostPlatform.system};
