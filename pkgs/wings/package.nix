@@ -11,12 +11,12 @@
   zlib,
 }: let
   # Latest stable release: https://github.com/calagopus/wings/releases
-  version = "1.0.5";
+  version = "1.0.8";
   src = fetchFromGitHub {
     owner = "calagopus";
     repo = "wings";
     rev = "release-${version}";
-    sha256 = "sha256-hluRA2EvLHwLYmAyIil2rTRCGZuRvoIThSnk/FZ8P7Y=";
+    sha256 = "sha256-C2ghtEud/r1lMNmSBnE7oG1kM1XxLa4ObRKFGtvhUVI=";
   };
 in
   rustPlatform.buildRustPackage (finalAttrs: {
@@ -26,7 +26,7 @@ in
     cargoLock = {
       lockFile = src + "/Cargo.lock";
       outputHashes = {
-        "compact_str-0.9.0" = "sha256-kUeH/N9X6XqKaI9ZZgP9HrYxBq4OofWqBANvCnQBBPg=";
+        "compact_str-0.9.0" = "sha256-67Z2ryErjCFsjMaN6rjUccI5LM7RmY/HCPmE+whgvxQ=";
       };
     };
 
