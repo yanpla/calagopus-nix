@@ -51,12 +51,7 @@ in
     version = "v${version}";
     inherit src;
 
-    cargoLock = {
-      lockFile = src + "/Cargo.lock";
-      outputHashes = {
-        "compact_str-0.9.0" = "sha256-6dapp2xFupnq2Ln89ttEyvYiPmlAXt/gK9oKOOKJgeg=";
-      };
-    };
+    cargoHash = "sha256-Xv+rj+ruJMp9Mq6CGDpZENb/XnMeb5qHoM+0nS8wxqk=";
 
     nativeBuildInputs = [
       perl
