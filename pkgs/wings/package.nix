@@ -1,6 +1,5 @@
 {
   lib,
-  stdenv,
   fetchFromGitHub,
   rustPlatform,
   perl,
@@ -23,12 +22,7 @@ in
     pname = "calagopus-wings";
     inherit version src;
 
-    cargoLock = {
-      lockFile = src + "/Cargo.lock";
-      outputHashes = {
-        "compact_str-0.9.0" = "sha256-67Z2ryErjCFsjMaN6rjUccI5LM7RmY/HCPmE+whgvxQ=";
-      };
-    };
+    cargoHash = "sha256-Lsba/5Ag03tvzvKUjtcaZKIcYy6i337jTnWl5WzC7T4=";
 
     nativeBuildInputs = [
       perl
