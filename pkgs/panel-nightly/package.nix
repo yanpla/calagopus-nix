@@ -10,12 +10,12 @@
   perl,
   openssl,
 }: let
-  version = "d32c9392efa588482f4519591afc3fc5148529de";
+  version = "d1225d8b17b0cd734785e770da6c191c70ec5d5c";
   src = fetchFromGitHub {
     owner = "calagopus";
     repo = "panel";
     rev = "${version}";
-    sha256 = "sha256-YguXo7SuzyBoRcrOMSQkxLNSDQEQlD1Hyk+1wwVahhw=";
+    sha256 = "sha256-HDl7M6JE2FB6TU8s6J6aoIRYYkyzz7z2A1H6IkLk/34=";
   };
   frontend = stdenv.mkDerivation (finalAttrs: {
     pname = "calagopus-panel-nightly-frontend";
@@ -32,7 +32,7 @@
     pnpmDeps = fetchPnpmDeps {
       inherit (finalAttrs) pname version src;
       fetcherVersion = 3;
-      hash = "sha256-EuqBF7a02LZODvv1HozXvVNuuRuMqsmTUeyAXiTI8Xs=";
+      hash = "sha256-7UN6P6/PlGbmh4+Hb2OFpAGKoAOein1skJiE5lT6H9s=";
     };
 
     buildPhase = ''
@@ -54,8 +54,7 @@ in
     cargoLock = {
       lockFile = src + "/Cargo.lock";
       outputHashes = {
-        "compact_str-0.9.0" = "sha256-kUeH/N9X6XqKaI9ZZgP9HrYxBq4OofWqBANvCnQBBPg=";
-        "garde-0.22.1" = "sha256-xV14dWRbm/Hhv2OPnaO98/lOXqttUFnVsSBhbRs1AsY=";
+        "compact_str-0.9.0" = "sha256-6dapp2xFupnq2Ln89ttEyvYiPmlAXt/gK9oKOOKJgeg=";
       };
     };
 
