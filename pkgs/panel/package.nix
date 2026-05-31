@@ -10,13 +10,13 @@
   perl,
   openssl,
 }: let
-  tag = "release-1.0.5";
+  tag = "release-1.0.7";
   version = "1.0.0-pre.3";
   src = fetchFromGitHub {
     owner = "calagopus";
     repo = "panel";
     rev = "${tag}";
-    sha256 = "sha256-9xsCWPnn78/rNp7gZ5kjADH3uzmDBSY8de7NNY0Owgk=";
+    sha256 = "sha256-NV+9Q7ZRec0QJfkzgjqBjjVSlmOWKBib8ZsgR4n2rKs=";
   };
   frontend = stdenv.mkDerivation (finalAttrs: {
     pname = "calagopus-panel-frontend";
@@ -33,7 +33,7 @@
     pnpmDeps = fetchPnpmDeps {
       inherit (finalAttrs) pname version src;
       fetcherVersion = 3;
-      hash = "sha256-iYgMpDWbw/o3FML0AWzpB725EaOAnEfBtqhfbVhj5to=";
+      hash = "sha256-o/3Xi68ZlQa/nBNf+JQCs4hYHKS6lqQhef/3w4E6jcg=";
     };
 
     buildPhase = ''
@@ -55,8 +55,7 @@ in
     cargoLock = {
       lockFile = src + "/Cargo.lock";
       outputHashes = {
-        "compact_str-0.9.0" = "sha256-kUeH/N9X6XqKaI9ZZgP9HrYxBq4OofWqBANvCnQBBPg=";
-        "garde-0.22.1" = "sha256-xV14dWRbm/Hhv2OPnaO98/lOXqttUFnVsSBhbRs1AsY=";
+        "compact_str-0.9.0" = "sha256-6dapp2xFupnq2Ln89ttEyvYiPmlAXt/gK9oKOOKJgeg=";
       };
     };
 
