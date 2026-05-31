@@ -11,13 +11,13 @@
   zlib,
 }: let
   # Latest main branch commit
-  rev = "7ccdd18484630c570448dced1a12bec70d4c3909";
-  version = "0-unstable-2026-05-14";
+  rev = "cfa73e0d5d8dd067c5d8164f65fb250496e877a0";
+  version = "0-unstable-2026-05-31";
   src = fetchFromGitHub {
     owner = "calagopus";
     repo = "wings";
     inherit rev;
-    sha256 = "sha256-dkwlV6h9sityMgX1J29uP52Nox6w5rJ5C6W+6lA4lhs=";
+    sha256 = "sha256-ExFI4cmQcKl1PBgtjF64oIAFMclUnxukWjGfxDrqi1I=";
   };
 in
   rustPlatform.buildRustPackage (finalAttrs: {
@@ -27,7 +27,7 @@ in
     cargoLock = {
       lockFile = src + "/Cargo.lock";
       outputHashes = {
-        "compact_str-0.9.0" = "sha256-kUeH/N9X6XqKaI9ZZgP9HrYxBq4OofWqBANvCnQBBPg=";
+        "compact_str-0.9.0" = "sha256-67Z2ryErjCFsjMaN6rjUccI5LM7RmY/HCPmE+whgvxQ=";
       };
     };
 
