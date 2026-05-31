@@ -52,7 +52,7 @@ in
     version = "v${version}";
     inherit src;
 
-    cargoHash = "sha256-g9yXxHg/RxVb2nb2HWP0/gSaPRYQ8i8ZS0sk4D9CBik=";
+    cargoHash = "sha256-Xv+rj+ruJMp9Mq6CGDpZENb/XnMeb5qHoM+0nS8wxqk=";
 
     nativeBuildInputs = [
       perl
