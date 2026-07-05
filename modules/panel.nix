@@ -87,6 +87,12 @@ in {
         type = lib.types.bool;
         default = false;
       };
+
+      port = lib.mkOption {
+        type = lib.types.port;
+        default = 6379;
+        description = "Port the locally created redis server listens on (localhost only). The panel's redis client (rustis) does not support unix sockets.";
+      };
     };
   };
 
@@ -107,13 +113,13 @@ in {
         APP_USE_DECRYPTION_CACHE=${if cfg.useDecryptionCache then "true" else "false"}
         APP_USE_INTERNAL_CACHE=${if cfg.useInternalCache then "true" else "false"}
         DATABASE_MIGRATE=${if cfg.database.migrate then "true" else "false"}
-        ${lib.optionalString cfg.database.createLocally "DATABASE_URL=postgresql:///calagopus-panel?host=/run/postgresql"}
+        ${lib.optionalString cfg.database.createLocally "DATABASE_URL=postgresql://calagopus-panel@localhost/calagopus-panel?host=/run/postgresql"}
         ${lib.optionalString (cfg.appLogDirectory != null) "APP_LOG_DIRECTORY=${toString cfg.appLogDirectory}"}
         ${lib.optionalString (cfg.trustedProxies != []) "APP_TRUSTED_PROXIES=${lib.concatStringsSep "," cfg.trustedProxies}"}
         ${lib.optionalString (cfg.sentryUrl != null) "SENTRY_URL=${cfg.sentryUrl}"}
         ${lib.optionalString (cfg.serverName != null) "SERVER_NAME=${cfg.serverName}"}
         ${lib.optionalString cfg.redis.createLocally
-          "REDIS_URL=unix://${config.services.redis.servers.calagopus-panel.unixSocket}"}
+          "REDIS_URL=redis://127.0.0.1:${toString cfg.redis.port}"}
       '';
     in {
       description = "Calagopus Panel";
@@ -172,6 +178,9 @@ in {
 
     services.redis.servers.calagopus-panel = lib.mkIf cfg.redis.createLocally {
       enable = true;
+      # rustis (the panel's redis client) only supports redis:// over TCP,
+      # not unix sockets; the default bind is localhost only
+      port = cfg.redis.port;
     };
   };
 }
