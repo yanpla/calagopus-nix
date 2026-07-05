@@ -1,5 +1,6 @@
 {
   lib,
+  stdenv,
   fetchFromGitHub,
   rustPlatform,
   perl,
@@ -45,6 +46,12 @@ in
       CARGO_GIT_BRANCH = "unknown";
       CARGO_GIT_COMMIT = "unknown";
     };
+
+    # wings-rs links libstdc++ (through the bundled unrar-rs) but does not
+    # get an RPATH entry for it, so the binary fails to start
+    postFixup = ''
+      patchelf --add-rpath ${lib.makeLibraryPath [stdenv.cc.cc.lib]} $out/bin/wings-rs
+    '';
 
     meta = {
       description = "Pterodactyl Wings alternative written in Rust — faster, more features, more maintainable";
