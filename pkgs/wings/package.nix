@@ -14,8 +14,10 @@
   src = fetchFromGitHub {
     owner = "calagopus";
     repo = "wings";
-    rev = "release-${version}";
-    sha256 = "sha256-asRFDcr/C9sZMtvdsBNS1GzexkYEENlOCkClx+7T4Zg=";
+    # commit behind the release-1.0.11 tag; release tags have been re-pushed
+    # upstream before, which breaks the fixed-output hash, so pin the commit
+    rev = "f91e64af68617dc7a0482b79e7fd4072828ae26b";
+    sha256 = "sha256-/vK5digTroDKPHfvCHIY+JRs5KXetbyrz2M5F5374ec=";
   };
 in
   rustPlatform.buildRustPackage (finalAttrs: {
