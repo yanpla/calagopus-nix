@@ -11,7 +11,7 @@
 }: let
   # Latest main branch commit
   rev = "50e0372a98bd96ae52081eb421a4b1d01e0a50fa";
-  version = "release-1.0.11-unstable-2026-07-18";
+  version = "release-1.1.0-unstable-2026-07-18";
   src = fetchFromGitHub {
     owner = "calagopus";
     repo = "wings";
