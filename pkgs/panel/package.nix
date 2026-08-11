@@ -52,6 +52,16 @@ in
 
     cargoHash = "sha256-Lf3XWr69vXZCWiPV3N0ln+MjDjZRbapBEsvhGSUiSo0=";
 
+    # Build only the panel binary, not the workspace defaults. 1.1.3 added
+    # bins/all-in-one, whose build.rs aborts unless it can obtain a wings-rs
+    # binary (WINGS_BINARY_PATH or a network fetch) — neither is available in
+    # the sandbox. The module runs panel-rs via mainProgram, so the all-in-one
+    # and heavy-supervisor binaries are not needed here.
+    cargoBuildFlags = ["-p" "panel-rs"];
+    # checkPhase would otherwise compile the whole workspace and hit the same
+    # build.rs, so scope the tests to the same member.
+    cargoTestFlags = ["-p" "panel-rs"];
+
     nativeBuildInputs = [
       perl
       openssl

@@ -53,6 +53,11 @@ in
 
     cargoHash = "sha256-Lf3XWr69vXZCWiPV3N0ln+MjDjZRbapBEsvhGSUiSo0=";
 
+    # See pkgs/panel: bins/all-in-one's build.rs cannot get a wings-rs binary
+    # in the sandbox, and only panel-rs is ever run.
+    cargoBuildFlags = ["-p" "panel-rs"];
+    cargoTestFlags = ["-p" "panel-rs"];
+
     nativeBuildInputs = [
       perl
       openssl
